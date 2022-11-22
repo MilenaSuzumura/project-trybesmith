@@ -8,6 +8,11 @@ export default class ProductsService {
     const products = await this.productsModel.getAllProducts();
     return products;
   }
+
+  async createProduct(info: IProducts): Promise<IProducts> {
+    const products = await this.productsModel.createProduct(info.name, info.amount);
+    return products;
+  }
 }
 
 /*   async createProduct(info) {

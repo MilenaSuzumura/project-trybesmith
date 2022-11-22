@@ -1,4 +1,4 @@
-import { RowDataPacket } from 'mysql2';
+import { ResultSetHeader, RowDataPacket } from 'mysql2';
 import connection from './connection';
 import { IProducts } from '../products';
 
@@ -11,12 +11,24 @@ export default class ProductsModel {
     );
     return products;
   }
+
+  async createProduct(name: string, amount: string): Promise<IProducts> {
+    const resultSetHeader = await this.connection.execute<ResultSetHeader>(
+      'INSERT INTO Trybesmith.Products (name, amount) VALUES (?, ?)',
+      [name, amount],
+    );
+    const { insertId } = resultSetHeader[0];
+    const product = {
+      id: insertId,
+      name,
+      amount,
+    };
+
+    return product;
+  }
 }
 
-/*   async createProduct(name: string, amount: string): Promise<IProducts> {
-    const [result] = await this.connection.execute(
-      'INSERT INTO products (name, amount) VALUES (?, ?)', [name, amount],
-    ); */
+/*    */
 
 /* const createProduct = async (name, amount) => {
   const [result] = await connection.execute(

@@ -5,6 +5,6 @@ const productsRoute = Router();
 const productsControllers = new ProductsControllers();
 
 productsRoute.get('/', productsControllers.getAllProducts.bind(productsControllers));
-// productsRoute.post('/products', productsControllers.cadastroProduto);
+productsRoute.post('/', productsControllers.cadastroProduto.bind(productsControllers));
 
 export default productsRoute;
