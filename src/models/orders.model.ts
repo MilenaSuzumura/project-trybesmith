@@ -23,17 +23,19 @@ export default class OrdersModel {
       'INSERT INTO Trybesmith.Orders (userId) VALUES (?)',
       [userId],
     );
+  
+    const { insertId } = resultSetHeader[0];
+    const id = insertId;
 
-    Promise.all(productsIds.map(async (productid) => {
+    await Promise.all(productsIds.map(async (productid) => {
       await this.connection.execute<ResultSetHeader>(
         'UPDATE Trybesmith.Products SET orderId=? WHERE id=?',
-        [productid, userId],
+        [id, productid],
       );
     }));
 
-    const { insertId } = resultSetHeader[0];
     const orderCompra = {
-      id: insertId,
+      id,
       userId,
       productsIds,
     };
