@@ -14,7 +14,3 @@ export default class ProductsService {
     return products;
   }
 }
-
-/*   async createProduct(info) {
-    const 
-  } */

@@ -9,4 +9,13 @@ export default class UsersControllers {
     const orders = await this.ordersService.getAllOrders();
     res.status(statusNumber.get).json(orders);
   }
+
+  async cadastraCompra(req: Request, res: Response) {
+    const { authorization } = req.headers;
+    if (authorization) {
+      const result = await this.ordersService
+        .cadastrarCompraService(authorization, req.body.productsIds);
+      return res.status(201).json(result);
+    }
+  }
 }

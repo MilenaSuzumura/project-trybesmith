@@ -30,4 +30,13 @@ export default class UsersModel {
     );
     return user;
   }
+
+  async getUserInfo(id: number): Promise<IUsers[]> {
+    const [user] = await this.connection.execute<IUsers[] & RowDataPacket[]>(
+      'SELECT * FROM Trybesmith.Users WHERE id=?',
+      [id],
+    );
+
+    return user;
+  }
 }

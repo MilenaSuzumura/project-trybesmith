@@ -1,4 +1,4 @@
-import { RowDataPacket } from 'mysql2';
+import { ResultSetHeader, RowDataPacket } from 'mysql2';
 import { IOrders } from '../orders';
 import connection from './connection';
 
@@ -16,5 +16,27 @@ export default class OrdersModel {
       GROUP BY orders.id`,
     );
     return order;
+  }
+
+  async cadastraCompra(userId: number, productsIds: number[]): Promise<IOrders> {
+    const resultSetHeader = await this.connection.execute<ResultSetHeader>(
+      'INSERT INTO Trybesmith.Orders (userId) VALUES (?)',
+      [userId],
+    );
+
+    Promise.all(productsIds.map(async (productid) => {
+      await this.connection.execute<ResultSetHeader>(
+        'UPDATE Trybesmith.Products SET orderId=? WHERE id=?',
+        [productid, userId],
+      );
+    }));
+
+    const { insertId } = resultSetHeader[0];
+    const orderCompra = {
+      id: insertId,
+      userId,
+      productsIds,
+    };
+    return orderCompra;
   }
 }

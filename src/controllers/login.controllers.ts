@@ -8,7 +8,6 @@ export default class LoginControllers {
     const { username, password } = req.body;
     const user = await this.loginService.login(username, password);
     if (user?.message !== undefined) {
-      console.log('entrou no if');
       return res.status(401).json(user);
     }
     return res.status(200).json(user);
