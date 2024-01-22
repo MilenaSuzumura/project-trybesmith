@@ -4,28 +4,22 @@ Trybesmith é um projeto focado em construir uma API Node Express utilizando o T
 
 <strong>OBS:</strong> ESSE PROJETO FOI DESENVOLVIDO NA TRYBE.
 
-<!-- 
-
-Blogs API é um projeto focado em desenvolver uma API e um banco de dados para a produção de conteúdo para um blog.
-
-<strong>OBS:</strong> ESSE PROJETO FOI DESENVOLVIDO NA TRYBE.
-
 ## Técnologias usadas
-* JavaScript;
-* Node.js;
-* Express.js;
-* Sequelize.js;
+* Typescript;
+* Node;
+* Express;
+* Sequelize;
 * Json web tokens;
 * DotEnv;
 * Joi;
 * Docker;
 * MySQL;
 * Jest;
-* Mock;
-* Sinon;
-* Chai;
-* Chai-http.
+* Nodemon;
+* Eslint.
 
+
+<!-- 
 ## Rotas, entradas e saídas
 
 <details>
