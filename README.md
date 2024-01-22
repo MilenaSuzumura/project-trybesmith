@@ -18,10 +18,21 @@ Trybesmith é um projeto focado em construir uma API Node Express utilizando o T
 * Nodemon;
 * Eslint.
 
-
-<!-- 
 ## Rotas, entradas e saídas
 
+<details>
+<summary>Endpoint GET /products</summary><br />
+Utilizado para retornar as informações de todos os produtos que contém no banco de dados.
+
+##### Exemplo de entrada:
+<img alt="imagem-exemplo-entrada-correta-get-products" src="/images-readme/get-products-exemplo-entrada.png">
+
+##### Exemplo de saída:
+<img alt="imagem-exemplo-saída-correta--get-products" src="/images-readme/get-products-exemplo-saida.png">
+
+</details>
+
+<!-- 
 <details>
 <summary>Endpoint POST /login</summary><br />
 Utilizado para quando o usuário vai acessar sua conta. O banco de dados exige que o usuário insira o email e senha correta e irá retornar um token temporário como confirmação de que está correto.
