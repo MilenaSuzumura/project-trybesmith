@@ -32,36 +32,40 @@ Utilizado para retornar as informações de todos os produtos que contém no ban
 
 </details>
 
-<!-- 
 <details>
-<summary>Endpoint POST /login</summary><br />
-Utilizado para quando o usuário vai acessar sua conta. O banco de dados exige que o usuário insira o email e senha correta e irá retornar um token temporário como confirmação de que está correto.
+<summary>Endpoint POST /products</summary><br />
+Utilizado para cadastrar produtos no banco de dados. Para isso, o banco de dados exige que o usuário insira um nome e a quantidade de ouros do produto.
+
+##### Informações necessárias:
+* <strong>name:</strong> É o nome do produto. Deve ser enviado como string e o mínimo de caracters é 3. É obrigatório.
+* <strong>amount:</strong> É a quantidade de ouros do produto. Deve ser enviado como string e o mínimo de caracters é 2. É obrigatório.
 
 ##### Exemplo de entrada:
-<img alt="imagem-exemplo-de-entrada-correta-post-login" src="/images-readme/post-login-exemplo-de-entrada.png">
+<img alt="imagem-exemplo-entrada-correta-post-products" src="/images-readme/post-products-exemplo-entrada.png">
 
 ##### Exemplo de saída:
-<img alt="imagem-exemplo-de-saída-correta-post-login" src="/images-readme/post-login-exemplo-de-saida.png">
+<img alt="imagem-exemplo-saída-correta-post-products" src="/images-readme/post-products-exemplo-saida.png">
 
 #### Inserindo informações incorretas
-Existem dois cenários onde a saída acima pode não ser retornada: caso o email ou/e senha estejam incorretas e caso falte uma das duas informações. Ambas possuem retornos diferentes.
+Existem dois cenários onde a saída acima pode não ser retornada: caso não preencha os requisitos necessários(explicados nas Informações Necessárias acima) e caso falte alguma das informações obrigatórias. Ambas possuem retornos diferentes.
 
-<strong>Retorno para email ou/e senha incorretas:</strong>
+<strong>Exemplo caso não preencha os requisitos necessários:</strong>
 ```
 {
-  "message": "Invalid fields"
+  "message": "\"name\" is not allowed to be empty"
 }
 ```
 
-<strong>Retorno para caso falte alguma das duas informações:</strong>
+<strong>Exemplo caso esteja faltando alguma das informações obrigatórias</strong>
 ```
 {
-  "message": "Some required fields are missing"
+  "message": "\"name\" is required"
 }
 ```
 
 </details>
 
+<!-- 
 <details>
 <summary>Endpoint POST /user</summary><br />
 Utilizado para criar um novo usuário. Para isso, necessita de um nome, email, senha e uma imagem. Assim como o login, retornará um token caso todas as informações enviadas foram validadas corretamente.
