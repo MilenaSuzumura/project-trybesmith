@@ -199,16 +199,17 @@ Para abrir o terminar do container, execute: `docker exec -it trybesmith bash`
 ## Instalando Dependências
   `npm install`
 
-<!-- 
-
 ## Banco de dados
-Para criar o banco de dados, execute: `npm run prestart`
+Para criar o banco de dados, execute: `npm run migration`
 
 Para popular o banco de dados: `npm run seed`
 
 ## Aplicação Node:
-Para executar a aplicação e acessar as rotas, execute: `npm run debug`
+Para executar a aplicação e acessar as rotas, execute: `npm run dev`
 
+
+
+<!-- 
 
 ## Executando Testes
 Para rodar todos os testes:
