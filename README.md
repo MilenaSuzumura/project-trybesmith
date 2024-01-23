@@ -100,37 +100,40 @@ Existem dois cenários onde a saída acima pode não ser retornada: caso não pr
 
 </details>
 
-<!-- 
-
 <details>
-<summary>Endpoint GET /user</summary><br />
-Utilizado para retornar as informações de todos os usuários que contém no banco de dados, porém é necessário ter um token para isso.
+<summary>Endpoint POST /login</summary><br />
+Utilizado para logar na conta. Para isso, necessita de um username e senha. Após, retornará um token caso todas as informações enviadas foram validadas corretamente.
+
+##### Informações necessárias:
+* <strong>username:</strong> É o nome de usuário. Deve ser enviado como string e o mínimo de caracters é 3. É obrigatório.
+* <strong>password:</strong> É a senha do usuário. Deve ser enviado como string e deve conter no mínimo 8 caracter. É obrigatório.
 
 ##### Exemplo de entrada:
-<img alt="imagem-exemplo-de-entrada-correta-get-user" src="/images-readme/get-user-exemplo-de-entrada.png">
+<img alt="imagem-exemplo-entrada-correta-post-login" src="/images-readme/post-login-exemplo-entrada.png">
 
 ##### Exemplo de saída:
-<img alt="imagem-exemplo-de-saida-correta-get-user" src="/images-readme/get-user-exemplo-de-saida.png">
-
+<img alt="imagem-exemplo-saída-correta-post-login" src="/images-readme/post-login-exemplo-saida.png">
 
 #### Inserindo informações incorretas
-Existem duas formas para o banco de dados não ser acessado. Não contendo um token ou tendo um token inválido.
+Existem dois cenários onde a saída acima pode não ser retornada: caso não preencha os requisitos necessários(explicados nas Informações Necessárias acima) e caso falte alguma das informações obrigatórias. Cada um deles terá uma mensagem diferente avisando o motivo de estar incorreta.
 
-<strong>Exemplo caso não contenha o token:</strong>
+<strong>Exemplo caso não preencha os requisitos necessários:</strong>
 ```
 {
-  "message": "Token not found"
+  "message": "\"password\" is not allowed to be empty"
 }
 ```
 
-<strong>Exemplo caso o token tenha expirado ou seja inválido:</strong>
+<strong>Exemplo caso esteja faltando alguma das informações obrigatórias</strong>
 ```
 {
-  "message": "Expired or invalid token"
+  "message": "\"username\" is required"
 }
 ```
 
 </details>
+
+<!-- 
 
 <details>
 <summary>Endpoint GET /user/:id</summary><br />
