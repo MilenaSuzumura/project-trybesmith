@@ -145,180 +145,33 @@ Utilizado para retornar as informações das compras realizadas.
 
 </details>
 
-<!-- 
-
 <details>
-<summary>Endpoint POST /categories</summary><br />
-Utilizado para criar uma nova categoria. Para isso, necessita de um nome e de um token valido. Caso as informações estejam corretas, retornara as informações da nova categoria.
-
-##### Exemplo de entrada:
-<img alt="imagem-exemplo-de-entrada-correta-post-categories" src="/images-readme/post-categories-exemplo-entrada.png">
-
-##### Exemplo de saída:
-<img alt="imagem-exemplo-de-saida-correta-post-categories" src="/images-readme/post-categories-exemplo-saida.png">
-
-#### Inserindo informações incorretas
-Existem quatro cenários onde a saída acima pode não ser retornada: não conter o nome da categoria, a string name estar vazia, caso não tenha o token e um token invalido.
-
-<strong>Exemplo caso não contenha o name:</strong>
-```
-{
-  "message": "\"name\" is required"
-}
-```
-
-<strong>Exemplo caso name seja uma string vazia:</strong>
-```
-{
-  "message": "\"name\" is not allowed to be empty"
-}
-```
-
-<strong>Exemplo caso não contenha o token:</strong>
-```
-{
-  "message": "Token not found"
-}
-```
-
-<strong>Exemplo caso o token tenha expirado ou seja inválido:</strong>
-```
-{
-  "message": "Expired or invalid token"
-}
-```
-
-</details>
-
-<details>
-<summary>Endpoint GET /categories</summary><br />
-Utilizado para retornar as informações de todas as categorias que contém no banco de dados, porém é necessário ter um token para isso.
-
-##### Exemplo de entrada:
-<img alt="imagem-exemplo-de-entrada-correta-get-categories" src="/images-readme/get-categories-exemplo-entrada.png">
-
-##### Exemplo de saída:
-<img alt="imagem-exemplo-de-saida-correta-get-categories" src="/images-readme/get-categories-exemplo-saida.png">
-
-#### Inserindo informações incorretas
-Existem dois cenários onde a saída acima pode não ser retornada: caso não tenha o token e um token invalido.
-
-<strong>Exemplo caso não contenha o token:</strong>
-```
-{
-  "message": "Token not found"
-}
-```
-
-<strong>Exemplo caso o token tenha expirado ou seja inválido:</strong>
-```
-{
-  "message": "Expired or invalid token"
-}
-```
-
-</details>
-
-<details>
-<summary>Endpoint POST /post</summary><br />
-Utilizado para criar um novo post. Para isso, necessita de um nome, email, senha e uma imagem. Assim como o login, retornará um token caso todas as informações enviadas foram validadas corretamente.
+<summary>Endpoint POST /orders</summary><br />
+Utilizado para criar uma nova compra. Para isso, necessita de um array com Ids dos produtos e de um token valido. Caso as informações estejam corretas, retornara as informações da nova compra.
 
 ##### Informações necessárias:
-* <strong>title:</strong> É o título do post e deve ser enviado como string. É obrigatório.
-* <strong>content:</strong> É o conteúdo do post e deve ser enviado como string. É obrigatório.
-* <strong>categoryIds:</strong> É um array de números com as categorias ao qual o post pertence e precisa ter pelo menos 1 id de categoria. É obrigatório.
+* <strong>productsIds:</strong> São os Ids dos produtos da compra. Deve ser enviado como um array de number e no mínimo ter 1 Id. É obrigatório.
 
 ##### Exemplo de entrada:
-<img alt="imagem-exemplo-de-entrada-correta-post-post" src="/images-readme/post-post-exemplo-entrada.png">
+<img alt="imagem-exemplo-entrada-correta-post-orders" src="/images-readme/post-orders-exemplo-entrada.png">
 
 ##### Exemplo de saída:
-<img alt="imagem-exemplo-de-saida-correta-post-post" src="/images-readme/post-post-exemplo-saida.png">
+<img alt="imagem-exemplo-saida-correta-post-orders" src="/images-readme/post-orders-exemplo-saida.png">
 
 #### Inserindo informações incorretas
-Existem dois cenários onde a saída acima pode não ser retornada: caso não preencha os requisitos necessários(explicados nas Informações Necessárias acima) e caso falte alguma das informações obrigatórias. Cada um deles terá uma mensagem diferente avisando o motivo de estar incorreta.
+Existem quatro cenários onde a saída acima pode não ser retornada: não conter o productsIds, productsId não for um array e caso venha vazia, caso não tenha o token e um token invalido.
 
-<strong>Exemplo caso não preencha os requisitos necessários:</strong>
+<strong>Exemplo caso não contenha o productsIds:</strong>
 ```
 {
-  "message": "Some required fields are missing"
+  "message": "\"productsIds\" is required"
 }
 ```
 
-<strong>Exemplo caso esteja faltando alguma das informações obrigatórias</strong>
+<strong>Exemplo caso productsIds seja um array vazio:</strong>
 ```
 {
-  "message": "\"content\" is required"
-}
-```
-
-##### Além disso, pode ter os erros do token.
-
-<strong>Exemplo caso não contenha o token:</strong>
-```
-{
-  "message": "Token not found"
-}
-```
-
-<strong>Exemplo caso o token tenha expirado ou seja inválido:</strong>
-```
-{
-  "message": "Expired or invalid token"
-}
-```
-
-</details>
-
-</details>
-
-<details>
-<summary>Endpoint GET /post</summary><br />
-Utilizado para retornar as informações de todas as postagens que contém no banco de dados, porém é necessário ter um token para isso.
-
-##### Exemplo de entrada:
-<img alt="imagem-exemplo-de-entrada-correta-get-post" src="/images-readme/get-post-exemplo-entrada.png">
-
-##### Exemplo de saída:
-<img alt="imagem-exemplo-de-saida-correta-get-post" src="/images-readme/get-post-exemplo-saida.png">
-
-
-#### Inserindo informações incorretas
-Existem dois cenários onde a saída acima pode não ser retornada: caso não tenha o token e um token invalido.
-
-<strong>Exemplo caso não contenha o token:</strong>
-```
-{
-  "message": "Token not found"
-}
-```
-
-<strong>Exemplo caso o token tenha expirado ou seja inválido:</strong>
-```
-{
-  "message": "Expired or invalid token"
-}
-```
-
-</details>
-
-<details>
-<summary>Endpoint GET /post/:id</summary><br />
-Utilizado para retornar as informações das postagens com o id que está no url que contém no banco de dados, porém é necessário ter um token para isso.
-
-##### Exemplo de entrada:
-<img alt="imagem-exemplo-de-entrada-correta-get-post-id" src="/images-readme/get-post-id-exemplo-entrada.png">
-
-##### Exemplo de saída:
-<img alt="imagem-exemplo-de-saida-correta-get-post-id" src="/images-readme/get-post-id-exemplo-saida.png">
-
-
-#### Inserindo informações incorretas
-Existem três cenários onde a saída acima pode não ser retornada: caso não exista post com aquele id, não tenha o token e um token invalido.
-
-<strong>Caso não exista post com aquele no banco de dados, o retorno será:</strong>
-```
-{
-  "message": "Post does not exist"
+  "message": "\"productsIds\" must include only numbers"
 }
 ```
 
@@ -332,21 +185,21 @@ Existem três cenários onde a saída acima pode não ser retornada: caso não e
 <strong>Exemplo caso o token tenha expirado ou seja inválido:</strong>
 ```
 {
-  "message": "Expired or invalid token"
+  "message": "Invalid token"
 }
 ```
 
 </details>
-
-<strong>OBS:</strong> Existe o Endpoint GET /search, porém não funciona.
 
 ## Utilizando o docker
 Para criar os containers, execute: `docker-compose up -d`
 
-Para abrir o terminar do container, execute: `docker exec -it blogs_api bash`
+Para abrir o terminar do container, execute: `docker exec -it trybesmith bash`
 
 ## Instalando Dependências
   `npm install`
+
+<!-- 
 
 ## Banco de dados
 Para criar o banco de dados, execute: `npm run prestart`
