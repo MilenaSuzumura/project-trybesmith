@@ -133,40 +133,19 @@ Existem dois cenários onde a saída acima pode não ser retornada: caso não pr
 
 </details>
 
-<!-- 
-
 <details>
-<summary>Endpoint GET /user/:id</summary><br />
-Utilizado para retornar as informações do usuário com o id que está no url que contém no banco de dados, porém é necessário ter um token para isso.
+<summary>Endpoint GET /orders</summary><br />
+Utilizado para retornar as informações das compras realizadas.
 
 ##### Exemplo de entrada:
-<img alt="imagem-exemplo-de-entrada-correta-get-user-id" src="/images-readme/get-user-id-exemplo-de-entrada.png">
+<img alt="imagem-exemplo-entrada-correta-get-orders" src="/images-readme/get-orders-exemplo-entrada.png">
 
 ##### Exemplo de saída:
-<img alt="imagem-exemplo-de-saida-correta-get-user-id" src="/images-readme/get-user-id-exemplo-resposta.png">
-
-<strong>Caso não exista usuário com aquele id no banco de dados, o retorno será:</strong>
-```
-{
-  "message": "User does not exist"
-}
-```
-
-<strong>Exemplo caso não contenha o token:</strong>
-```
-{
-  "message": "Token not found"
-}
-```
-
-<strong>Exemplo caso o token tenha expirado ou seja inválido:</strong>
-```
-{
-  "message": "Expired or invalid token"
-}
-```
+<img alt="imagem-exemplo-saida-correta-get-orders" src="/images-readme/get-orders-exemplo-saida.png">
 
 </details>
+
+<!-- 
 
 <details>
 <summary>Endpoint POST /categories</summary><br />
