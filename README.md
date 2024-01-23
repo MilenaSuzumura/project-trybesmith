@@ -65,22 +65,21 @@ Existem dois cenários onde a saída acima pode não ser retornada: caso não pr
 
 </details>
 
-<!-- 
 <details>
-<summary>Endpoint POST /user</summary><br />
-Utilizado para criar um novo usuário. Para isso, necessita de um nome, email, senha e uma imagem. Assim como o login, retornará um token caso todas as informações enviadas foram validadas corretamente.
+<summary>Endpoint POST /users</summary><br />
+Utilizado para criar um novo usuário. Para isso, necessita de um username, classe, level e senha. Após, retornará um token caso todas as informações enviadas foram validadas corretamente.
 
 ##### Informações necessárias:
-* <strong>displayName:</strong> É o nome e sobrenome. Deve ser enviado como string e o mínimo de caracters é 8. É obrigatório.
-* <strong>email:</strong> É o email e deve ser enviado como string. É obrigatório.
-* <strong>password:</strong> É a senha. Deve ser enviado como string e deve conter no mínimo 6 caracter. É obrigatório.
-* <strong>image:</strong> É uma imagem ou foto de usuário e deve ser enviado como string. Esse é o único que não é obrigatório. 
+* <strong>username:</strong> É o nome de usuário. Deve ser enviado como string e o mínimo de caracters é 3. É obrigatório.
+* <strong>classe:</strong> É a classe do usuário. Deve ser enviado como string e o mínimo de caracters é 3. É obrigatório.
+* <strong>level:</strong> É o level do usuário. Deve ser enviado como number e mínimo ser acima de 1. É obrigatório. 
+* <strong>password:</strong> É a senha do usuário. Deve ser enviado como string e deve conter no mínimo 8 caracter. É obrigatório.
 
 ##### Exemplo de entrada:
-<img alt="imagem-exemplo-de-entrada-correta-post-user" src="/images-readme/post-user-exemplo-de-entrada.png">
+<img alt="imagem-exemplo-entrada-correta-post-users" src="/images-readme/post-users-exemplo-entrada.png">
 
 ##### Exemplo de saída:
-<img alt="imagem-exemplo-de-saída-correta-post-user" src="/images-readme/post-login-exemplo-de-saida.png">
+<img alt="imagem-exemplo-saída-correta-post-users" src="/images-readme/post-users-exemplo-saida.png">
 
 #### Inserindo informações incorretas
 Existem dois cenários onde a saída acima pode não ser retornada: caso não preencha os requisitos necessários(explicados nas Informações Necessárias acima) e caso falte alguma das informações obrigatórias. Cada um deles terá uma mensagem diferente avisando o motivo de estar incorreta.
@@ -88,18 +87,20 @@ Existem dois cenários onde a saída acima pode não ser retornada: caso não pr
 <strong>Exemplo caso não preencha os requisitos necessários:</strong>
 ```
 {
-  "message": "\"password\" length must be at least 6 characters long"
+  "message": "\"classe\" is not allowed to be empty"
 }
 ```
 
 <strong>Exemplo caso esteja faltando alguma das informações obrigatórias</strong>
 ```
 {
-  "message": "\"password\" is required"
+  "message": "\"username\" is required"
 }
 ```
 
 </details>
+
+<!-- 
 
 <details>
 <summary>Endpoint GET /user</summary><br />
